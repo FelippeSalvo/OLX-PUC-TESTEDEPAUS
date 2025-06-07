@@ -8,7 +8,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const pagination = document.querySelector(".pagination");
   const filterButtons = document.querySelectorAll(".filters button");
 
-  fetch("data/anuncios.json")
+  fetch("db/anuncios.json")
     .then(response => response.json())
     .then(data => {
       anuncios = data;
