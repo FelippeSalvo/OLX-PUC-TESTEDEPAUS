@@ -1,4 +1,106 @@
 document.addEventListener("DOMContentLoaded", () => {
+  // ----------------------------
+  // CARROSSEL AUTOMÁTICO
+  // ----------------------------
+  const carouselContainer = document.querySelector(".carousel-container");
+  const images = document.querySelectorAll(".carousel-image");
+  const prevBtn = document.getElementById("prev");
+  const nextBtn = document.getElementById("next");
+  
+  // Cria os indicadores (dots)
+  const indicatorsContainer = document.createElement("div");
+  indicatorsContainer.classList.add("carousel-indicators");
+  
+  images.forEach((_, index) => {
+    const dot = document.createElement("span");
+    dot.classList.add("dot");
+    dot.dataset.index = index;
+    indicatorsContainer.appendChild(dot);
+  });
+  
+  carouselContainer.appendChild(indicatorsContainer);
+  const dots = document.querySelectorAll(".dot");
+  
+  let currentIndex = 0;
+  let intervalId = null;
+  const slideInterval = 5000; // 5 segundos
+  
+  // Mostra o slide atual
+  function showSlide(index) {
+    // Esconde todas as imagens e remove a classe active
+    images.forEach(img => {
+      img.classList.remove("active");
+      img.style.opacity = 0;
+    });
+    
+    // Remove a classe active de todos os dots
+    dots.forEach(dot => dot.classList.remove("active"));
+    
+    // Mostra a imagem atual e ativa o dot correspondente
+    images[index].classList.add("active");
+    images[index].style.opacity = 1;
+    dots[index].classList.add("active");
+    
+    currentIndex = index;
+  }
+  
+  // Avança para o próximo slide
+  function nextSlide() {
+    const newIndex = (currentIndex + 1) % images.length;
+    showSlide(newIndex);
+  }
+  
+  // Volta para o slide anterior
+  function prevSlide() {
+    const newIndex = (currentIndex - 1 + images.length) % images.length;
+    showSlide(newIndex);
+  }
+  
+  // Inicia o carrossel automático
+  function startCarousel() {
+    intervalId = setInterval(nextSlide, slideInterval);
+  }
+  
+  // Para o carrossel automático (quando o usuário interage)
+  function stopCarousel() {
+    clearInterval(intervalId);
+  }
+  
+  // Event listeners
+  prevBtn.addEventListener("click", () => {
+    stopCarousel();
+    prevSlide();
+    startCarousel();
+  });
+  
+  nextBtn.addEventListener("click", () => {
+    stopCarousel();
+    nextSlide();
+    startCarousel();
+  });
+  
+  dots.forEach(dot => {
+    dot.addEventListener("click", () => {
+      stopCarousel();
+      const dotIndex = parseInt(dot.dataset.index);
+      showSlide(dotIndex);
+      startCarousel();
+    });
+  });
+  
+  // Pausa o carrossel quando o mouse está sobre ele
+  carouselContainer.addEventListener("mouseenter", stopCarousel);
+  
+  // Retoma o carrossel quando o mouse sai
+  carouselContainer.addEventListener("mouseleave", startCarousel);
+  
+  // Inicia o carrossel
+  showSlide(0);
+  startCarousel();
+
+  // ----------------------------
+  // CÓDIGO DOS ANÚNCIOS (mantido do original)
+  // ----------------------------
   let anuncios = [];
   let currentPage = 1;
   const itemsPerPage = 9;
@@ -74,30 +176,4 @@ document.addEventListener("DOMContentLoaded", () => {
       button.classList.add("active");
     });
   });
-
-  let slideIndex = 0;
-  const slides = document.querySelectorAll(".carousel-container .carousel-image");
-  const prevBtn = document.querySelector(".arrow:first-of-type");
-  const nextBtn = document.querySelector(".arrow:last-of-type");
-
-  function showSlide(index) {
-    slides.forEach((img, i) => {
-      img.style.display = i === index ? "block" : "none";
-    });
-  }
-
-  function nextSlide() {
-    slideIndex = (slideIndex + 1) % slides.length;
-    showSlide(slideIndex);
-  }
-
-  function prevSlide() {
-    slideIndex = (slideIndex - 1 + slides.length) % slides.length;
-    showSlide(slideIndex);
-  }
-
-  showSlide(slideIndex);
-  setInterval(nextSlide, 4000);
-  nextBtn.addEventListener("click", nextSlide);
-  prevBtn.addEventListener("click", prevSlide);
 });
