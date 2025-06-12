@@ -1,0 +1,14 @@
+{
+  "titulo": "Apostila de Física 3º Ano",
+  "descricao": "Apostila completa e pouco usada. Perfeita para revisão pré-Enem.",
+  "preco": 20.00,
+  "categoria": "Materiais Escolares",
+  "carteiraEstudantil": "uploads/carteira123.jpg",
+  "nome": "Davi Martins",
+  "email": "davi.martins@email.com",
+  "telefone": "(31) 99876-5432",
+  "campus": "PUC Minas - Barreiro",
+  "curso": "Ciência da Computação",
+  "turno": "Manhã",
+  "dataPublicacao": "2025-05-30T14:22:00Z"
+}
