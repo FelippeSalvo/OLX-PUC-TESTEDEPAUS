@@ -1,0 +1,25 @@
+{
+  "usuarios": [
+    {
+      "id": "1",
+      "tipoConta": "Comprador",
+      "email": "joao.silva@sga.pucminas.br",
+      "senha": "12345678",
+      "NomeDeUsuario": "JoãoSilva"
+    },
+    {
+      "id": "2",
+      "tipoConta": "Vendedor",
+      "email": "maria.souza@sga.pucminas.br",
+      "senha": "senhaSegura123",
+      "NomeDeUsuario": "MariaSouza"
+    },
+    {
+      "id": "3a77",
+      "email": "teste@sga.pucminas.br",
+      "senha": "12",
+      "tipoConta": "Comprador",
+      "nomeUsuario": "teste"
+    }
+  ]
+}
