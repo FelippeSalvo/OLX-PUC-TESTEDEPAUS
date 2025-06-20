@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Página de Pesquisa</title>
+  <link rel="stylesheet" href="style.css">
+  <body style="background-color: #ffffff; color: #ffffff;">
+</head>
+<body>
+  <div class="container">
+    <div class="close-btn">✖</div>
+
+    <h1>Buscar Algo</h1>
+
+    <div class="search-bar">
+      <input type="text" placeholder="Digite sua pesquisa..." />
+      <button>Buscar</button>
+    </div>
+
+    <div class="filters">
+      <h2>Filtrar</h2>
+      <div class="filter-buttons">
+        <button>Livros</button>
+        <button>Roupas</button>
+        <button>Tênis</button>
+        <button>Acessórios</button>
+        <button>Cartão</button>
+        <button>Celular</button>
+        <button>Notebook</button>
+        <button id="outrosBtn">+ Outros</button>
+      </div>
+    </div>
+
+    <!-- Card de imagens -->
+    <div class="card-overlay hidden" id="cardOverlay">
+      <div class="card-content">
+        <button class="close-card" onclick="fecharCard()">Voltar</button>
+        <div class="images-grid" id="imagesGrid"></div>
+      </div>
+    </div>
+
+    <!-- Card com filtros extras -->
+    <div class="card-overlay hidden" id="extraFilterOverlay">
+      <div class="card-content">
+        <button class="close-card" onclick="fecharExtraCard()">Voltar</button>
+        <h3>Outros Filtros</h3>
+        <div class="filter-buttons" id="extraFilterButtons"></div>
+      </div>
+    </div>
+
+    <div class="footer">
+      <div class="logo">
+        <img src="logo.jpg" alt="arthur">
+      </div>
+      <div class="info">
+        <p>© 2025 OLX PUC. Todos os direitos reservados.</p>
+        <p>OLX PUC é uma plataforma digital independente dedicada à compra, venda e troca de produto</p>
+        <p>e serviços entre membros da comunidade acadêmica. É proibida a reprodução, distribuição ou </p>
+        <p>qualquer uso não autorizado do conteúdo deste site sem consentimento prévio por escrito.</p>
+      </div>
+      <div class="icons">🔗 💬 ⚙️</div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
