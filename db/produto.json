@@ -1,0 +1,26 @@
+{
+  "id": 1,
+  "titulo": "Desenvolvimento Web para Iniciantes",
+  "descricao": "Descubra o mundo do desenvolvimento web e aprenda HTML, CSS e JavaScript do zero neste livro abrangente e prático. Se você sempre quis criar seus próprios sites e aplicativos, este livro é perfeito para você. Com ele, você aprenderá os fundamentos de forma fácil de entender, mesmo sendo um iniciante completo.",
+  "preco": 72.62,
+  "imagens": [
+    "public/assets-detalhes/imagens/61IW4QcXekL._AC_UL480_FMwebp_QL65_.webp",
+    "public/assets-detalhes/imagens/download.jpg",
+    "public/assets-detalhes/imagens/IMAGEM LIVRO.jpg"
+  ],
+  "vendedor": {
+    "nome": "Puc",
+    "membroDesde": 2025,
+    "avaliacao": 4.5,
+    "curso": "ADS",
+    "contato": {
+      "telefone": "(31) 91234-5678",
+      "email": "puc@example.com"
+    },
+    "foto": "public/assets-detalhes/imagens/images.png"
+  },
+  "categoria": "Livros",
+  "localizacao": "Belo Horizonte - MG",
+  "ano": 2024,
+  "condicao": "Novo"
+}
