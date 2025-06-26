@@ -122,40 +122,51 @@ document.addEventListener("DOMContentLoaded", () => {
     if (currentCategoria === "Todos") return anuncios;
     return anuncios.filter(anuncio => anuncio.categoria === currentCategoria);
   }
-
+  
+// Ligando o ver mais com a minha pagina de detalhes
   function renderPage(page) {
-    adsGrid.innerHTML = "";
-    const filtrados = getAnunciosFiltrados();
-    const start = (page - 1) * itemsPerPage;
-    const end = start + itemsPerPage;
-    const items = filtrados.slice(start, end);
+  adsGrid.innerHTML = "";
+  const filtrados = getAnunciosFiltrados();
+  const start = (page - 1) * itemsPerPage;
+  const end = start + itemsPerPage;
+  const items = filtrados.slice(start, end);
 
-    items.forEach(anuncio => {
-      const card = document.createElement("div");
-      card.classList.add("ad-card");
+  items.forEach(anuncio => {
+    const card = document.createElement("div");
+    card.classList.add("ad-card");
 
-      card.innerHTML = `
-        <img src="${anuncio.imagem}" alt="${anuncio.titulo}" class="image-placeholder">
-        <div class="ad-info">
-          <h3><i class="fas fa-tag"></i> ${anuncio.titulo}</h3>
-          <p>${anuncio.descricao}</p>
-          <span class="price">${anuncio.preco}</span>
-          <button class="btn-card">Ver mais</button>
-        </div>
-      `;
-      adsGrid.appendChild(card);
+    card.innerHTML = `
+      <img src="${anuncio.imagem}" alt="${anuncio.titulo}" class="image-placeholder">
+      <div class="ad-info">
+        <h3><i class="fas fa-tag"></i> ${anuncio.titulo}</h3>
+        <p>${anuncio.descricao}</p>
+        <span class="price">${anuncio.preco}</span>
+        <button class="btn-card" data-id="${anuncio.id}">Ver mais</button>
+      </div>
+    `;
+    adsGrid.appendChild(card);
+  });
+
+  const verMaisButtons = document.querySelectorAll(".btn-card");
+  verMaisButtons.forEach(button => {
+    button.addEventListener("click", () => {
+      const id = button.getAttribute("data-id");
+      window.location.href = `detalhes.html?id=${id}`;
     });
+  });
 
-    const totalPages = Math.ceil(filtrados.length / itemsPerPage);
-    pagination.innerHTML = "";
-    for (let i = 1; i <= totalPages; i++) {
-      const btn = document.createElement("button");
-      btn.textContent = i;
-      btn.setAttribute("data-page", i);
-      if (i === page) btn.classList.add("active");
-      pagination.appendChild(btn);
-    }
+
+  const totalPages = Math.ceil(filtrados.length / itemsPerPage);
+  pagination.innerHTML = "";
+  for (let i = 1; i <= totalPages; i++) {
+    const btn = document.createElement("button");
+    btn.textContent = i;
+    btn.setAttribute("data-page", i);
+    if (i === page) btn.classList.add("active");
+    pagination.appendChild(btn);
   }
+}
+
 
   pagination.addEventListener("click", (e) => {
     const button = e.target.closest("button[data-page]");
